@@ -1,0 +1,204 @@
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light Theme (Default) */
+body.light-theme {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background-color: #222;
+    color: #f1f1f1;
+}
+
+.calculator {
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 320px;
+}
+
+body.light-theme .calculator {
+    background-color: #fff;
+}
+
+body.dark-theme .calculator {
+    background-color: #333;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.display {
+    padding: 20px;
+    text-align: right;
+}
+
+.display input {
+    width: 100%;
+    border: none;
+    font-size: 2.5em;
+    padding: 10px;
+    text-align: right;
+    outline: none;
+}
+
+body.light-theme .display input {
+    background-color: #eee;
+    color: #333;
+}
+
+body.dark-theme .display input {
+    background-color: #444;
+    color: #f1f1f1;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+}
+
+.btn {
+    border: none;
+    padding: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+body.light-theme .btn {
+    background-color: #f9f9f9;
+    color: #333;
+}
+body.light-theme .btn:hover {
+    background-color: #efefef;
+}
+body.light-theme .btn.operator {
+    background-color: #e0e0e0;
+}
+body.light-theme .btn.operator:hover {
+    background-color: #d0d0d0;
+}
+body.light-theme .btn.equals {
+    background-color: #ff9800; /* Orange for equals */
+    color: white;
+}
+body.light-theme .btn.equals:hover {
+    background-color: #e68900;
+}
+body.light-theme .btn.ac {
+    background-color: #f44336; /* Red for AC */
+    color: white;
+}
+body.light-theme .btn.ac:hover {
+    background-color: #d32f2f;
+}
+
+
+body.dark-theme .btn {
+    background-color: #555;
+    color: #f1f1f1;
+    border: 1px solid #444; /* Add subtle borders for better separation in dark mode */
+}
+body.dark-theme .btn:hover {
+    background-color: #666;
+}
+body.dark-theme .btn.operator {
+    background-color: #4a4a4a;
+}
+body.dark-theme .btn.operator:hover {
+    background-color: #5a5a5a;
+}
+body.dark-theme .btn.equals {
+    background-color: #e68900; /* Keep similar vibrant color for equals */
+    color: #333; /* Dark text on vibrant button for contrast */
+}
+body.dark-theme .btn.equals:hover {
+    background-color: #ff9800;
+}
+body.dark-theme .btn.ac {
+    background-color: #d32f2f; /* Keep similar vibrant color for AC */
+    color: white;
+}
+body.dark-theme .btn.ac:hover {
+    background-color: #f44336;
+}
+
+
+.btn.zero {
+    grid-column: span 2;
+}
+
+/* Theme Switcher Styles */
+.theme-switcher-container {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.theme-switcher {
+    position: relative;
+    display: inline-block;
+    width: 50px; /* smaller */
+    height: 24px; /* smaller */
+}
+
+.theme-switcher input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px; /* smaller */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* smaller */
+    width: 18px; /* smaller */
+    left: 3px; /* adjusted */
+    bottom: 3px; /* adjusted */
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3; /* Blue when checked (dark mode on) */
+}
+body.dark-theme input:checked + .slider {
+    background-color: #ff9800; /* Orange when checked in dark mode (light mode on) */
+}
+
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); /* adjusted for smaller size */
+}
